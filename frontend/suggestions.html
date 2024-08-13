@@ -23,7 +23,7 @@
     </nav>
     <section class="province-container">
         <p><b>Select a province or territory below: (Data is currently available for BC, Alberta, and Saskatchewan) </b></p>
-        <form action="/submit-province" method="post">
+        <form id="province-form" action="/submit-province" method="post">
             <ul class="province-list">
                 <li><input type="radio" id="alberta" name="province" value="Alberta"><label for="alberta">Alberta</label></li>
                 <li><input type="radio" id="british-columbia" name="province" value="British Columbia"><label for="british-columbia">British Columbia</label></li>
@@ -41,6 +41,20 @@
             </ul>
             <button type="submit" class="submit-button">Submit</button>
         </form>
+        <script>
+            document.getElementById('province-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+                
+                const selectedProvince = document.querySelector('input[name="province"]:checked');
+                
+                if (selectedProvince) {
+                    const provinceValue = selectedProvince.value;
+                    window.location.href = `search.html?province=${encodeURIComponent(provinceValue)}`;
+                } else {
+                    alert('Please select a province.');
+                }
+            });
+        </script>
     </section>
 </body>
 </html>

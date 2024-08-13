@@ -146,10 +146,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         // Display the restaurant details
                         const restaurantElement = document.createElement('div');
                         restaurantElement.innerHTML = `
-                            <h2>${data.restaurant.name}</h2>
-                            <p>Location: ${data.restaurant.location}</p>
-                            <p>Rating: ${data.restaurant.rating}</p>
-                            <img src="${data.restaurant.image}" alt="${data.restaurant.name}">
+                           h2>${restaurant.name}</h2>
+                                <p>Location: ${restaurant.location}</p>
+                                <p>Rating: ${restaurant.rating}</p>
+                                <img src="${restaurant.image}" alt="${restaurant.name}">
+                                <a href="${restaurant.link}" ';
                         `;
                         document.getElementById('restaurant-results').appendChild(restaurantElement);
                     } else {

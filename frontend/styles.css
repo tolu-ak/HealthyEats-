@@ -765,4 +765,45 @@ body.suggestions-page {
     margin-top: 10px; /* Space between image and caption */
     font-size: 14px; /* Adjust font size if needed */
     color: #333; /* Adjust text color if needed */
+
+    
+}
+/* Restaurant Card Styles */
+.restaurant-card {
+    border: 2px solid #006400; /* Dark green border */
+    border-radius: 15px; /* Curved edges */
+    padding: 20px;
+    background-color: #fff; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for better look */
+    margin-bottom: 20px;
+    text-align: center;
+    max-width: 400px; /* Limit the width of each card */
+    margin: 10px auto; /* Center card horizontally */
+}
+
+.restaurant-card h2 {
+    color: #006400; /* Dark green color for the name */
+    margin: 0;
+}
+
+.restaurant-card p, .restaurant-card a {
+    color: #333; /* Dark color for text */
+    margin: 5px 0;
+}
+
+.restaurant-card a {
+    text-decoration: none; /* Remove underline from links */
+    font-weight: bold;
+}
+
+.restaurant-card a:hover {
+    color: #006400; /* Dark green color on hover */
+}
+
+.restaurant-card .restaurant-image {
+    width: 100%; /* Make the image fill the width of its container */
+    max-height: 250px; /* Limit height of the image */
+    object-fit: cover; /* Ensure the image covers the container */
+    border-radius: 10px; /* Curved edges for the image */
+    margin-top: 10px; /* Space between details and image */
 }
