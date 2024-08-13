@@ -544,6 +544,8 @@ body.suggestions-page {
     border-radius: 24px; /* Match the rounded edges of the container */
     flex: 1; /* Allows the input to take up remaining space */
     outline: none; /* Remove the default focus outline */
+    margin-right: 10px; /* Add space between input and button */
+
 }
 
 .search-container button {
@@ -554,7 +556,7 @@ body.suggestions-page {
     border-radius: 24px; /* Match the rounded edges of the container */
     cursor: pointer;
     font-size: 16px;
-    margin-left: 10px; /* Add space between input and button */
+    margin-left: 277px; /* Add space between input and button */
 }
 
 

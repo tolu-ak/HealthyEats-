@@ -73,8 +73,6 @@ app.use(express.json());
 
 
 
-// Serve static files from the 'frontend' directory
-app.use(express.static(path.join(__dirname, '../frontend')));
 
 
 
