@@ -262,7 +262,7 @@ body {
     padding: 0 10px;
     width: 100%; /* Full width */
     max-width: 600px; /* Limit max size */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add shadow for a better look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     margin-top: 120px; /* Moves the search bar down by approximately two lines */
     margin-bottom: 20px; /* Space below the search bar */
 }
@@ -373,7 +373,7 @@ button {
 
 /*consistent background style */
 body.suggestions-page {
-    background: url('images/bgimage.jpg') no-repeat center center fixed; /* Replace with your background image path */
+    background: url('images/bgimage.jpg') no-repeat center center fixed; 
     background-size: cover; /* Ensures the background covers the entire page */
     color: #333; /* Adjust text color if needed */
 }
@@ -496,7 +496,7 @@ body.suggestions-page {
 .login-box button {
     width: 100%;
     padding: 10px;
-    background-color: #006400; /* Dark green */
+    background-color: #006400; 
     color: white;
     border: none;
     border-radius: 5px; /* Rounded edges */
@@ -525,7 +525,7 @@ body.suggestions-page {
 
 .search-container {
     background-color: white;
-    border: 2px solid #006400; /* Dark green border */
+    border: 2px solid #006400; 
     border-radius: 24px; /* Rounded edges */
     display: flex;
     align-items: center;
@@ -661,7 +661,7 @@ body.suggestions-page {
 }
 
 .province-container {
-    color: white; /* Sets text color to white */
+    color: white; 
     font-weight: bold; /* Makes the text bold */
     margin-top: 250px; 
     margin-left: 500px;
@@ -702,7 +702,7 @@ body.suggestions-page {
 
 /* Meal Card Styles */
 .meal-card {
-    border: 2px solid #006400; /* Dark green border */
+    border: 2px solid #006400; /
     border-radius: 15px;
     padding: 10px;
     background-color: #fff;
@@ -716,7 +716,7 @@ body.suggestions-page {
 
 .meal-card img {
     width: 100%; /* Ensure image takes full width of the card */
-    height: auto; /* Maintain aspect ratio */
+    height: auto; 
     max-height: 150px; /* Limit height of the image */
     object-fit: cover; /* Ensure the image covers the area without stretching */
     border: 2px solid green; /* Green border */
