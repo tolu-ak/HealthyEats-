@@ -1,20 +1,28 @@
+
 const express = require('express')
 const crypto = require('crypto')
 const { connection } = require('./conn')
 
 const mealRouter = express.Router()
 
-mealRouter.get('/mealsearch', (req,res) => {
-    const{name,calories,carbohydrates,fat,protein,sodium,iron,cholesterol} = req.body
+mealRouter.post('/mealsearch', (req,res) => {
+    const meal = req.body.meal;
+    console.log(meal);
+    
 
     //select meal and its components from database
-    const sql = "SELECT * WHERE name =? FROM nigerianfoods and SELECT * WHERE name =? FROM alternativeoptions";
-    connection.query(sql, function (err, result) {
-        if (input) throw err;
-    });
-    res.json(results);
-});
+    const sql = `
+    SELECT * FROM nigerianfoods WHERE name = ?
+    UNION ALL
+    SELECT * FROM alternativeoptions WHERE name = ?
+`;
+
+connection.query(sql, [req.body.meal, req.body.meal], function (err, result) {
+    if (err) throw err;
+    console.log(result);
+    res.json(result);
+}); 
 
 module.exports = mealRouter;
 
-
+});

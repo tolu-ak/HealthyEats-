@@ -23,10 +23,10 @@ authRouter.post('/signup', (req, res) => {
     connection.query(sql, [firstname, lastname, email, encryptedPassword], (err, result) => {
         if (err) {
             console.error(err);
-            return res.status(500).json({ success: false, message: 'Error creating user' }); // **Changed**
+            return res.status(500).json({ success: false, message: 'Error creating user' }); 
         }
         console.log("1 record inserted");
-        res.status(201).json({ success: true, message: 'User created successfully' }); // **Changed**
+        res.status(201).json({ success: true, message: 'User created successfully' });
     });
 });
 

@@ -37,48 +37,86 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Event listener for meal search form
-    const mealForm = document.getElementById('meal-form');
-    if (mealForm) {
-        mealForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevents the default action of submitting the form and reloading the page
-            const mealInput = document.getElementById('meal-input');
-
-            if (mealInput) {
-                const meal = mealInput.value;
-
-                fetch(`http://127.0.0.1:3000/meals?meal=${encodeURIComponent(meal)}`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    // Clear previous results
-                    document.getElementById('meal-results').innerHTML = '';
-                    
-                    if (data.meal) {
-                        // Display the meal and its breakdown
-                        const mealElement = document.createElement('div');
-                        mealElement.innerHTML = `
-                            <h2>${data.meal.name}</h2>
-                            <p>${data.meal.breakdown}</p>
-                            <h3>Healthier Alternative</h3>
-                            <p>${data.alternative.name}</p>
-                            <p>${data.alternative.breakdown}</p>
-                        `;
-                        document.getElementById('meal-results').appendChild(mealElement);
-                    } else {
-                        alert('Meal not found');
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-            } else {
-                console.error('Meal input element not found.');
-            }
-        });
-    }
+    // 
+    document.addEventListener('DOMContentLoaded', function() {
+        const mealForm = document.getElementById('meal-form');
+        if (mealForm) {
+            mealForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevents the default action of submitting the form and reloading the page
+                const mealInput = document.getElementById('Input');
+                if (mealInput) {
+                    const meal = mealInput.value;
+                    fetch('http://127.0.0.1:3000/meal/mealsearch', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ meal: meal })   
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        // Clear previous results
+                        const mealResults = document.querySelector('.search-results');
+                        mealResults.innerHTML = '';
+                        
+                        if (data && data.length > 0) {
+                            const meal = data[0]; // First result is the searched meal
+                            const alternative = data[1]; // Second result is the alternative
+    
+                            // Display the searched meal
+                            const mealElement = document.createElement('div');
+                            mealElement.innerHTML = `
+                                <h3 id="meal-name">${meal.name}</h3>
+                                <img id="meal-image" src="${meal.image || ''}" alt="${meal.name}">
+                                <p id="meal-description">${meal.description || 'No description available.'}</p>
+                                <div id="meal-breakdown">
+                                    <h4>Nutritional Breakdown:</h4>
+                                    <ul>
+                                        <li>Calories: <span id="meal-calories">${meal.calories || '0'}</span> kcal</li>
+                                        <li>Carbohydrates: <span id="meal-carbohydrates">${meal.carbohydrates || '0'}</span> g</li>
+                                        <li>Fat: <span id="meal-fat">${meal.fat || '0'}</span> g</li>
+                                        <li>Protein: <span id="meal-protein">${meal.protein || '0'}</span> g</li>
+                                        <li>Sodium: <span id="meal-sodium">${meal.sodium || '0'}</span> mg</li>
+                                        <li>Iron: <span id="meal-iron">${meal.iron || '0'}</span> mg</li>
+                                        <li>Cholesterol: <span id="meal-cholesterol">${meal.cholesterol || '0'}</span> mg</li>
+                                    </ul>
+                                </div>
+                            `;
+                            mealResults.appendChild(mealElement);
+    
+                            // Display the alternative meal
+                            const alternativeElement = document.createElement('div');
+                            alternativeElement.innerHTML = `
+                                <h3 id="alternative-meal-name">${alternative.name}</h3>
+                                <img id="alternative-meal-image" src="${alternative.image || ''}" alt="${alternative.name}">
+                                <p id="alternative-meal-description">${alternative.description || 'No description available.'}</p>
+                                <div id="alternative-meal-breakdown">
+                                    <h4>Nutritional Breakdown:</h4>
+                                    <ul>
+                                        <li>Calories: <span id="alternative-meal-calories">${alternative.calories || '0'}</span> kcal</li>
+                                        <li>Carbohydrates: <span id="alternative-meal-carbohydrates">${alternative.carbohydrates || '0'}</span> g</li>
+                                        <li>Fat: <span id="alternative-meal-fat">${alternative.fat || '0'}</span> g</li>
+                                        <li>Protein: <span id="alternative-meal-protein">${alternative.protein || '0'}</span> g</li>
+                                        <li>Sodium: <span id="alternative-meal-sodium">${alternative.sodium || '0'}</span> mg</li>
+                                        <li>Iron: <span id="alternative-meal-iron">${alternative.iron || '0'}</span> mg</li>
+                                        <li>Cholesterol: <span id="alternative-meal-cholesterol">${alternative.cholesterol || '0'}</span> mg</li>
+                                    </ul>
+                                </div>
+                            `;
+                            mealResults.appendChild(alternativeElement);
+                        } else {
+                            alert('Meal not found');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                } else {
+                    console.error('Meal input element not found.');
+                }
+            });
+        }
+    });
+    
 
     // Event listener for restaurant search form
     const restaurantForm = document.getElementById('restaurant-form');
@@ -92,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const meal = mealInput.value;
                 const province = provinceSelect.value;
 
-                fetch(`http://127.0.0.1:3000/restaurants?meal=${encodeURIComponent(meal)}&province=${encodeURIComponent(province)}`, {
+                fetch(`'http://127.0.0.1:3000/rest/restaurantsearch`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
@@ -201,3 +239,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
