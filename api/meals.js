@@ -6,19 +6,37 @@ const mealRouter = express.Router();
 
 mealRouter.post('/mealsearch', (req, res) => {
   const meal = req.body.meal;
-  console.log(meal);
 
-  //select meal and its components from database
-  const sql = `
-    SELECT * FROM nigerianfoods WHERE name = ?
-    UNION ALL
-    SELECT * FROM alternativeoptions WHERE name = ?
-`;
 
-  connection.query(sql, [req.body.meal, req.body.meal], function (err, result) {
+  // select meal and its components from database
+
+
+const sql = `
+  SELECT * from nigerianfoods WHERE name LIKE ?
+`
+
+  const food = `%${meal}%`
+
+
+  connection.query(sql, [food], function (err, nigerianfood) {
     if (err) throw err;
-    console.log(result);
-    res.json(result);
+   
+
+    const sql = ` 
+        SELECT alternativenigerianfoods.* FROM alternativenigerianfoods INNER JOIN nigerianfoods ON alternativenigerianfoods.food_id = nigerianfoods.id WHERE nigerianfoods.name LIKE ?
+    `;
+
+    connection.query(sql, [food], function (err, altfood) {
+      if (err) throw err;
+
+      const data = [
+        nigerianfood[0],
+        altfood[0]
+      ]
+
+      console.log(data)
+     return res.json(data)
+    })
   });
 });
 
