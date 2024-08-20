@@ -1,11 +1,11 @@
 const mysql = require("mysql");
 
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
+  host: process.env.DBHOSTNAME,
+  user:  process.env.DBUSER,
   password: process.env.PASSWORD,
-  database: "healthyeatswebsite",
-  port: "3306", //default mysql port
+  database:"if0_37141202_healthyeatsDB",
+  port: '3306',
 });
 
 // connect to database
