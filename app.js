@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express"); //import express library so you can use its features  express is a framework for node that makes building websites easier
 const mysql = require("mysql"); // import sql client library and allow it to interact with database
 const morgan = require("morgan"); //imports morgan
@@ -8,7 +9,8 @@ const { connection } = require("./conn"); //import database connection
 
 const path = require("path");
 const app = express(); //create express function, app is an instance of express
-const port = 3000; //3000 is the port number that the server will listen for incoming requests on.
+console.log(process.env.PORT);
+const port = process.env.PORT || 3000; //3000 is the port number that the server will listen for incoming requests on.
 
 app.use(cors()); //cors grants it access for all routes- allows all origins
 app.use(morgan('tiny'));
