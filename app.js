@@ -1,13 +1,10 @@
 require('dotenv').config();
-const express = require("express"); //import express library so you can use its features  express is a framework for node that makes building websites easier
-const mysql = require("mysql"); // import sql client library and allow it to interact with database
-const morgan = require("morgan"); //imports morgan
+const express = require('express'); //import express library so you can use its features  express is a framework for node that makes building websites easier
+const morgan = require('morgan'); //imports morgan
 // const bodyParser = require("body-parser"); //imports body-parser that helps parse requests in a middleware
-const cors = require("cors"); //protects it so someone from another IP address cant access it
-const { connection } = require("./conn"); //import database connection
+const cors = require('cors'); //protects it so someone from another IP address cant access it
 
-
-const path = require("path");
+const path = require('path');
 const app = express(); //create express function, app is an instance of express
 console.log(process.env.PORT);
 const port = process.env.PORT || 3000; //3000 is the port number that the server will listen for incoming requests on.
@@ -16,7 +13,6 @@ app.use(cors()); //cors grants it access for all routes- allows all origins
 app.use(morgan('tiny'));
 app.use(express.json());
 // app.use(bodyParser.json()); // middleware to parse JSON bodies
-
 
 //temporary database that i am not using anymore
 
@@ -50,10 +46,6 @@ app.use(express.json());
 //   }
 // });
 
-
-
-
-
 //connect to DB
 
 // connection.connect((err) => {
@@ -64,7 +56,6 @@ app.use(express.json());
 //   }
 // });
 
-
 // const { pool } = require("./conn");
 
 // pool.getConnection((err, connection) => {
@@ -73,32 +64,23 @@ app.use(express.json());
 //   connection.release(); // Release the connection back to the pool
 // });
 
-
-
-
-
-
-//import routers 
-const authRouter= require('./authentication');
-const profileRouter= require('./profile');
+//import routers
+const authRouter = require('./authentication');
+const profileRouter = require('./profile');
 const mealsRouter = require('./meals');
 const restaurantRouter = require('./restaurant');
-const questionsRouter= require('./questions');
-
-
+const questionsRouter = require('./questions');
 
 //use routers
-app.use('/auth',authRouter);
-app.use('/meal',mealsRouter);
-app.use('/rest',restaurantRouter);
-app.use('/question',questionsRouter);
-app.use('/profile',profileRouter);
-
-
+app.use('/auth', authRouter);
+app.use('/meal', mealsRouter);
+app.use('/rest', restaurantRouter);
+app.use('/question', questionsRouter);
+app.use('/profile', profileRouter);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`); //starting the server, listen on the defined port & run a message when it starts
 });
 
-// to run write npm because it is the package manager like a tool that helps to run this script so in this case 
+// to run write npm because it is the package manager like a tool that helps to run this script so in this case
 // it is npm run start
