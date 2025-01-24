@@ -5,8 +5,9 @@ Welcome to the HealthyEats GitHub repository! This project focuses on helping im
 
 Visit the live website here: https://healthyeatsnutrition.netlify.app/
 
-**
-🌟 About the Project**
+
+🌟 **About the Project**
+
 HealthyEats was developed as a resource for immigrants in Canada who face cultural food inaccessibility and are at risk of diet-related diseases such as Type-2 diabetes and heart disease. Studies show that 26% of immigrants in Canada have such health issues, often due to limited access to familiar and nutritious meal options.
 
 This website offers:
@@ -14,12 +15,12 @@ Healthier alternatives to cultural dishes that are accessible within Canada.
 Restaurant suggestions for cultural meals in your Canadian province.
 
 **🚀 How to Use**
-Visit the live site: HealthyEats.
-Use the navigation bar to explore:
-Meals: Search for cultural dishes and alternatives.
-Restaurant Suggestions: Locate nearby restaurants serving your favorite meals.
+
+- Use the navigation bar to explore
+- Meals: Search for cultural dishes and alternatives.
 
 **🌐 Supported Regions and Dishes**
+
 Currently, the platform provides:
 Regions: Western Canada (British Columbia, Alberta, Saskatchewan).
 Dishes: African meals such as jollof rice, akara, fried rice, amala, and pounded yam.
@@ -27,6 +28,7 @@ Our long-term goal is to expand this platform to include nutritious information 
 
 
 **🎯 Goals**
+
 Bridge the cultural food accessibility gap in Canada.
 Provide healthier meal options without losing cultural essence.
 Empower users to make informed choices about their diets.
